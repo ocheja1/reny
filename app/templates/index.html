@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rently</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <div class="nav-elements">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../static/image/logo.png" alt="Website Logo">
+                </a>
+            </div>
+            <div class="bx bx-menu" id="menu-icon"></div>
+
+            <div class="nav_links">
+                <a href="#home" class="active">Home</a>
+                <a>|</a>
+                <a href="{{ url_for('auth.login') }}">Log in</a>
+                <a>|</a>
+                <a href="PropertyForm.html">
+                    <img src="../static/image/home-2_icon.png" alt="Form"  class="formicon">
+                </a>
+            </div>
+    </header>
+    <main>
+        <div class="image">
+            <img
+              class="modern-residential"
+              src="../static/image/Bg.png"
+            />
+        </div>
+        <div class="center-container">
+            <div class="bg-text-container">
+                <div class="bg-text">Discover, Connect, Rent.</div>
+            </div>
+            <div class="search-box">
+                <div class="input-container">
+                    <input type="text" placeholder="Desired Location">
+                    <button id="searchButton">Search</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+    </footer>
+    <script src="../static/js/script.js"></script>
+</body>
+</html>

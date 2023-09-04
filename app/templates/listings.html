@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places"></script>
+    <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+</head>
+<body>
+    <header>
+        <!-- Your header content goes here -->
+        <div class="nav-elements">
+            <div class="logo">
+                <a href="/templates/index.html">
+                    <img src="/static/image/logo.png" alt="Website Logo"></a>
+            </div>
+            <div class="bx bx-menu" id="menu-icon"></div>
+
+            <div class="nav_links">
+                <a href="/templates/index.html">Home</a>
+                <a>|</a>
+                <a href="#listings" class="active">Listings</a>
+                <a>|</a>
+                <a href="#">Log in</a>
+            </div>
+    </header>
+    <main>
+        <!-- section for main -->
+        <section class="list_map">
+            <div class="lists">
+                <div class="list_top">
+                    <a href="" class="nav-hist">Home > Listings</a>
+                    <div class="nav_items">
+                        <input type="text" class="search" placeholder="Map Location: Enter location and press Enter">
+                        <div class="btn-box">
+                            <a href="#" class="btn">Max Price</a>
+                            <a href="#" class="btn">Beds</a>
+                            <a href="#" class="btn">filters</a>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <p>10,000 properties</p>
+                        <p>Sort by: <span>Best Match</span></p>
+                    </div>
+                </div>
+                <div class="list_down"></div>
+            </div>
+            <div class="map" id="map"></div>
+        </section>
+    </main>
+</body>
+</html>
