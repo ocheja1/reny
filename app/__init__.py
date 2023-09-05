@@ -1,17 +1,33 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_wtf.csrf import CSRFProtect  # Import CSRFProtect
 import os
+import logging
+from logging.handlers import RotatingFileHandler
 
 db = SQLAlchemy()
-DB_NAME = "rently_web.db"  # Change the database name as needed
+DB_NAME = "rently_web.db"
+
+csrf = CSRFProtect()
 
 
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = os.urandom(32)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://rently_admin:rently@localhost/rently_web'  # MySQL URI
-    db.init_app(app)
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://rently_admin:rently@localhost/rently_web'
+    app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {'pool_pre_ping': True}
+
+    db.init_app(app)  # Initialize SQLAlchemy
+
+    # Initialize CSRF protection
+    csrf.init_app(app)
+
+    # Configure logging
+    if not app.debug:
+        log_handler = RotatingFileHandler('error.log', maxBytes=10240, backupCount=10)
+        log_handler.setLevel(logging.ERROR)
+        app.logger.addHandler(log_handler)
 
     # Import and register blueprints
     from .views import views
@@ -19,8 +35,9 @@ def create_app():
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/auth')
 
+    # Create database tables within the application context
     with app.app_context():
-        db.create_all()  # Create database tables if they don't exist
+        db.create_all()
 
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
@@ -39,5 +56,3 @@ def create_database(app):
         with app.app_context():
             db.create_all()
             print('Created Database!')
-
-# Note: Replace '.views' and '.auth' with the actual package names where your views and auth blueprints are located.

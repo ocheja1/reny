@@ -30,3 +30,11 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
     properties = db.relationship('Property', backref='owned_properties', lazy=True)
+
+    def __init__(self, email, fullname, password):
+        self.email = email
+        self.fullname = fullname
+        self.password = password
+
+    def __repr__(self):
+        return '<User {}>'.format(self.fullname)
