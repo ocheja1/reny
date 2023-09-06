@@ -18,9 +18,28 @@ class Property(db.Model):
     lga = db.Column(db.String(50))
     street = db.Column(db.String(100))
     price = db.Column(db.Float, nullable=False)
-    image_url = db.Column(db.String(255))
     youtube_links = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    image_data = db.Column(db.LargeBinary)  # New column for binary image data
+
+    def __init__(self, landlord_id, first_name, last_name, landlord_address, property_type,
+                 number_of_beds, location, state, lga, street, price, image_data, youtube_links):
+        self.landlord_id = landlord_id
+        self.first_name = first_name
+        self.last_name = last_name
+        self.landlord_address = landlord_address
+        self.property_type = property_type
+        self.number_of_beds = number_of_beds
+        self.location = location
+        self.state = state
+        self.lga = lga
+        self.street = street
+        self.price = price
+        self.image_data = image_data  # Updated to use the binary image data
+        self.youtube_links = youtube_links
+
+    def __repr__(self):
+        return f'<Property {self.first_name} {self.last_name}>'
 
 
 class User(db.Model, UserMixin):

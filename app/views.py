@@ -1,6 +1,7 @@
-from flask import Blueprint, render_template, send_file, request, flash, redirect, url_for
+from flask import Blueprint, render_template, flash, redirect, url_for, request
 from flask_login import login_required, current_user
 from .models import Property
+from .forms import PropertyForm
 from . import db
 
 views = Blueprint('views', __name__)
@@ -14,37 +15,56 @@ def index():
 @views.route('/property/create', methods=['GET', 'POST'])
 @login_required
 def create_property():
-    if request.method == 'POST':
-        # Extract form data
-        title = request.form.get('property-title')
-        property_type = request.form.get('property-type')
-        number_of_beds = request.form.get('numberofbeds')
-        location = request.form.get('location')
-        state = request.form.get('state')
-        lga = request.form.get('lga')
-        street = request.form.get('street')
-        price = request.form.get('price')
-        youtube_links = request.form.get('youtube-links')
+    form = PropertyForm()
 
-        # Create a new Property object using the data
-        new_property = Property(
-            title=title,
-            property_type=property_type,
-            number_of_beds=number_of_beds,
-            location=location,
-            state=state,
-            lga=lga,
-            street=street,
-            price=price,
-            youtube_links=youtube_links,
-            landlord=current_user  # Associate the property with the current user (landlord)
-        )
+    if request.method == 'POST' and form.validate_on_submit():
+        try:
+            # Extract form data
+            first_name = form.first_name.data
+            last_name = form.last_name.data
+            landlord_address = form.landlord_name.data
+            property_type = form.property_type.data
+            number_of_beds = form.number_of_beds.data
+            location = form.location.data
+            state = form.state.data
+            lga = form.lga.data
+            street = form.street.data
+            price = float(form.price.data)  # Convert the price to float
+            youtube_links = form.youtube_links.data
 
-        # Add the property to the database and commit the changes
-        db.session.add(new_property)
-        db.session.commit()
+            image_file = form.image_upload.data  # Access the uploaded file
 
-        flash('Property added!', category='success')
-        return redirect(url_for('views.index'))
+            if image_file:
+                # Read binary image data
+                image_data = image_file.read()
 
-    return render_template(url_for('create_property'))
+                # Create a new Property object using the form data, including the image data
+                new_property = Property(
+                    landlord_id=current_user.id,
+                    first_name=first_name,
+                    last_name=last_name,
+                    landlord_address=landlord_address,
+                    property_type=property_type,
+                    number_of_beds=number_of_beds,
+                    location=location,
+                    state=state,
+                    lga=lga,
+                    street=street,
+                    price=price,
+                    image_data=image_data,  # Store binary image data
+                    youtube_links=youtube_links
+                )
+
+                # Add the Property object to the database session and commit
+                db.session.add(new_property)
+                db.session.commit()
+
+                flash('Property added!', category='success')
+                return redirect(url_for('views.index'))
+
+        except Exception as e:
+            # Handle any unexpected errors gracefully
+            flash(f'An error occurred: {str(e)}', category='danger')
+
+    # If there are validation errors or if the request method is GET, show the form
+    return render_template('PropertyForm.html', form=form)

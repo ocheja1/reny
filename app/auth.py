@@ -4,7 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
 from sqlalchemy.exc import IntegrityError
-from .forms import LoginForm
+from .forms import LoginForm, SignupForm
 
 auth = Blueprint('auth', __name__)
 
@@ -40,22 +40,18 @@ def logout():
 
 @auth.route('/signup', methods=['GET', 'POST'])
 def signup():
-    if request.method == 'POST':
-        email = request.form.get('email')
-        fullname = request.form.get('fullName')
-        password1 = request.form.get('password1')
-        password2 = request.form.get('password2')
+    form = SignupForm()
 
-        if len(email) < 4:
-            flash('Email must be greater than 3 characters.', category='error')
-        elif len(fullname) < 2:
-            flash('Full name must be greater than 1 character.', category='error')
-        elif len(password1) < 7:  # Check if the password is too short
-            flash('Password must be at least 7 characters.', category='error')
-        elif password1 != password2:
-            flash('Passwords don\'t match.', category='error')
+    if form.validate_on_submit():
+        email = form.email.data
+        fullname = form.fullName.data
+        password = form.password1.data
+
+        existing_user = User.query.filter_by(email=email).first()
+        if existing_user:
+            flash('Email already exists.', category='error')
         else:
-            hashed_password = generate_password_hash(password1, method='sha256')
+            hashed_password = generate_password_hash(password, method='sha256')
             new_user = User(email=email, fullname=fullname, password=hashed_password)
 
             try:
@@ -63,8 +59,8 @@ def signup():
                 db.session.commit()
                 flash('Account created!', category='success')
                 return redirect(url_for('auth.login'))  # Redirect to login page after successful signup
-            except IntegrityError:
+            except Exception as e:
                 db.session.rollback()
-                flash('Email already exists.', category='error')
+                flash('An error occurred while creating your account.', category='error')
 
-    return render_template('signup.html')
+    return render_template('signup.html', form=form)

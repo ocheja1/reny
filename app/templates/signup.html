@@ -12,6 +12,7 @@
         <div class="signup-box">
             <h1>Sign Up</h1>
             <form method="POST" action="{{ url_for('auth.signup') }}">
+                {{ form.csrf_token }}
                 <input type="text" name="fullName" placeholder="Full Name" required>
                 <input type="email" name="email" placeholder="Email Address" required>
                 <input type="password" name="password1" placeholder="Password" required>

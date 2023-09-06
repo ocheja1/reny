@@ -1,10 +1,16 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
-from flask_wtf.csrf import CSRFProtect  # Import CSRFProtect
+from flask_wtf.csrf import CSRFProtect
 import os
 import logging
 from logging.handlers import RotatingFileHandler
+
+
+# Import your custom filter function here
+def format_currency(value):
+    return f'N{value:,.2f}'  # Format as Naira with two decimal places and comma separators
+
 
 db = SQLAlchemy()
 DB_NAME = "rently_web.db"
@@ -17,6 +23,8 @@ def create_app():
     app.config['SECRET_KEY'] = os.urandom(32)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://rently_admin:rently@localhost/rently_web'
     app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {'pool_pre_ping': True}
+    app.config['UPLOAD_FOLDER'] = 'image_uploads'
+    app.config['SQLALCHEMY_ECHO'] = True
 
     db.init_app(app)  # Initialize SQLAlchemy
 
@@ -28,6 +36,9 @@ def create_app():
         log_handler = RotatingFileHandler('error.log', maxBytes=10240, backupCount=10)
         log_handler.setLevel(logging.ERROR)
         app.logger.addHandler(log_handler)
+
+    # Register the custom filter
+    app.jinja_env.filters['format_currency'] = format_currency
 
     # Import and register blueprints
     from .views import views
