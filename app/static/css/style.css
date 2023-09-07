@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 body {
-    background-color: #000000; /* Hexadecimal value for black */
-    margin: 0; /* Reset default margin to remove spacing */
-    padding: 0; /* Reset default padding to remove spacing */
-    color: #ffffff; /* Set text color to white for better contrast */
+    background-color: #000000;
+    margin: 0;
+    padding: 0;
+    color: #ffffff;
 }
 
 *{
@@ -32,15 +32,15 @@ body {
 }
 
 .nav_links{
-    display: flex; /* Use flex display to arrange links in a row */
-    gap: 15px; /* Add a gap of 20px between links */
+    display: flex;
+    gap: 15px;
     margin-top: 60px;
     margin-right: 4rem;
 }
 
 .nav_links a{
-    text-decoration: none; /* Remove underlines from links */
-    font-weight: bold; /* Set link text to bold */
+    text-decoration: none;
+    font-weight: bold;
     color: #ffffff;
     font-weight: 700;
     font-size: 20px;
@@ -66,13 +66,13 @@ body {
     
 }
 
-/* Add this to your existing CSS */
+
 a img {
     transition: transform 0.3s ease-in-out;
 }
 
 a:hover .formicon {
-    transform: scale(1.2); /* Increase the scale factor as needed */
+    transform: scale(1.2);
 }
 
 
@@ -80,24 +80,24 @@ a:hover .formicon {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50vh; /* Half of the viewport height */
+    height: 50vh;
     z-index: 1;
 }
 
 .modern-residential {
     width: 100%;
     height: auto;
-    max-height: 144.7%; /* Limits the image height to half of the parent container's height */
+    max-height: 144.7%;
     z-index: -1;
 }
 
 .center-container {
     position: absolute;
-    top: 45%; /* Vertically center the container */
-    left: 50%; /* Horizontally center the container */
-    transform: translate(-50%, -50%); /*Center the container perfectly */
-    text-align: center; /* Center text within the container */
-    z-index: 2; /* Bring the content to the front */
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 2;
 }
 
 .bg-text-container {
@@ -119,6 +119,26 @@ a:hover .formicon {
     width: 700px;
 }
 
+
+.btn.btn-primary {
+    background-color: #007bff;
+    color: white;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: none;
+    cursor: pointer;
+    width: auto;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn.btn-primary:hover {
+    background-color: black;
+}
+
+
+
 .input-container {
     display: flex;
     align-items: center;
@@ -129,11 +149,13 @@ a:hover .formicon {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+
 .input-container input[type="text"],
 .input-container button {
     padding: 10px 20px;
     border: none;
     display: inline-block;
+    width: 50px;
 }
 
 .input-container input[type="text"] {
@@ -209,15 +231,6 @@ a:hover .formicon {
     border: 1px solid #000;
 }
 
-/* .btn-box .btn{
-    display: inline-flex;
-    border-radius: 5px;
-    border: 1px solid #000;
-    justify-content: center;
-    align-items: center;
-    
-} */
-
 .btn-box {
     position: relative;
     display: flex;    
@@ -245,25 +258,6 @@ a:hover .formicon {
     background-color: #4561EC; /* Darker color on hover */
 }
 
-/* .info{
-    display: flex;
-    width: 683px;
-    /* padding: 13px 12px;
-    align-items: flex-start;
-    gap: 483px;
-    background: #F4F2F2;
-    position: relative;
-    top: 100px;
-    left: 20px;
-    max-width: 100rem;
-    color: #000;
-    text-align: center;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-
-} */
 
 .info {
     display: flex;
@@ -284,11 +278,11 @@ a:hover .formicon {
 }
 
 .info p {
-    margin: 0; /* Remove default margin */
+    margin: 0;
 }
 
 .info span {
-    font-weight: bold; /* Make the span text bold */
+    font-weight: bold;
     color: #4561EC;
 }
 
@@ -333,15 +327,14 @@ a:hover .formicon {
     z-index: 2;
 }
 .list_top {
-    width: 700px; /* Adjust the width as needed */
-    height: 200px; /* Adjust the height as needed */
+    width: 700px;
+    height: 200px;
     flex-shrink: 0;
     background: #FFF;
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
     z-index: 1;
 }
 
-/* Add this to your CSS file to style the "Meet the Team" section */
 .meet-the-team {
     background-color: #f4f4f4;
     padding: 40px 0;
@@ -372,7 +365,7 @@ a:hover .formicon {
     color: #666;
 }
 
-/* CSS to hide the profile summary by default */
+
 .profile-summary {
     display: none;
     position: absolute;
@@ -381,34 +374,34 @@ a:hover .formicon {
     padding: 10px;
     border-radius: 5px;
     z-index: 1;
-    top: 50%; /* Position it in the middle vertically */
-    left: 50%; /* Position it in the middle horizontally */
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
     width: 300px;
     height: 300px;
 }
 
-/* CSS to display the profile summary on hover */
+
 .team-member:hover .profile-summary {
     display: block;
 }
 
 .profile-summary p {
-    font-size: 16px; /* Change font size */
-    color: #FFFFFF; /* Change text color */
+    font-size: 16px;
+    color: #FFFFFF;
 }
 
 
 /* Footer styles */
 .site-footer {
-    background-color: #333; /* Background color for the footer */
-    color: #fff; /* Text color */
+    background-color: #333;
+    color: #fff;
     padding: 40px 0;
 }
 
 .container {
-    max-width: 1200px; /* Set a maximum width for content in the footer */
-    margin: 0 auto; /* Center align content */
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -416,7 +409,7 @@ a:hover .formicon {
 }
 
 .footer-logo img {
-    max-width: 100px; /* Adjust the maximum width of the logo */
+    max-width: 100px;
     height: auto;
 }
 
@@ -432,11 +425,11 @@ a:hover .formicon {
 .footer-links a {
     text-decoration: none;
     color: #fff;
-    transition: color 0.3s ease; /* Smooth color transition on hover */
+    transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
-    color: #ff5733; /* Change text color on hover */
+    color: #ff5733;
 }
 
 .footer-contact p {
@@ -451,13 +444,124 @@ a:hover .formicon {
     margin-right: 20px;
 }
 
-/* Additional styles for specific social media icons */
-.footer-social .social-icon:hover {
-    color: #ff5733; /* Change icon color on hover */
+
+/*.footer-social .social-icon:hover {*/
+/*    color: #ff5733;*/
+/*}*/
+
+
+.features {
+    padding: 40px 0;
+    text-align: center;
+    background-color: #f4f4f4;
 }
 
-img {
+.features h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.feature {
+    display: inline-block;
+    margin: 0 20px;
+    max-width: 300px;
+    text-align: center;
+}
+
+.feature img {
     max-width: 100%;
-    height: auto;
+    border-radius: 50%;
 }
 
+.feature h3 {
+    font-size: 18px;
+    margin-top: 20px;
+    color: #333;
+}
+
+.feature p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Add these styles to your CSS file */
+
+.about-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9; /* Light gray background */
+    padding: 40px 0;
+    text-align: center;
+    color: #333; /* Dark gray text color */
+}
+
+.about-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.inspiration-story {
+    font-size: 16px;
+    width: 50%;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    text-align: left; /* Left-align the text within the story */
+    background-color: #f4f4f4; /* Light gray background color */
+    padding: 20px; /* Add some padding for spacing */
+    border-radius: 10px; /* Rounded corners */
+    border: 1px solid #ccc; /* Add a border */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+.team-vision {
+    position: relative;
+    font-size: 16px;
+    width: 50%;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    text-align: left; /* Left-align the text within the story */
+    background-color: #f4f4f4; /* Light gray background color */
+    padding: 20px; /* Add some padding for spacing */
+    border-radius: 10px; /* Rounded corners */
+    border: 1px solid #ccc; /* Add a border */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.inspiration-container {
+    width: 50%;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.about-section p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.team-links a {
+    display: block;
+    color: #4561EC;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.github-link a {
+    display: inline-block;
+    background-color: #4561EC;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.github-link a:hover {
+    background-color: #333;
+}

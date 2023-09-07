@@ -11,7 +11,7 @@
     <header>
         <div class="nav-elements">
             <div class="logo">
-                <a href="index.html">
+                <a href="{{ url_for('views.index') }}">
                     <img src="../static/image/logo.png" alt="Website Logo">
                 </a>
             </div>
@@ -72,6 +72,67 @@
                 </div>
             </div>
         </section>
+        <section class="features">
+    <h2>Key Features</h2>
+    <div class="feature">
+        <img src="../static/image/house-1239420_1280.jpg" alt="Feature 1">
+        <h3>No Agent Fees</h3>
+        <p>
+            With Rently, you can discover your dream rental
+            property without the added cost of agent fees.
+            Say goodbye to expensive middlemen and enjoy
+            a hassle-free search for your perfect home.
+        </p>
+    </div>
+    <div class="feature">
+        <img src="../static/image/the-search-for-a-house-4532392_1280.jpg" alt="Feature 2">
+        <h3>Detailed Property Insights</h3>
+        <p>
+            Get in-depth property insights at your fingertips.
+            From property types to the number of bedrooms and
+            amenities, Rently provides you with all the information
+            you need to make confident decisions about your next home.
+        </p>
+    </div>
+    <div class="feature">
+        <img src="../static/image/family-house-2844962_1280.jpg" alt="Feature 3">
+        <h3>Effortless Property Discovery</h3>
+        <p>
+            Rently simplifies your property search by letting you find the
+            perfect rental home with just a few clicks. No more endless
+            scrolling or sifting through listings—discover your ideal
+            property effortlessly.
+        </p>
+    </div>
+</section>
+        <!-- Add this section following the Feature section -->
+<section class="about-section">
+    <h2>Our Story</h2>
+    <div class="inspiration-container">
+    <p class="inspiration-story">
+        The inspiration behind Rently comes from the frustrating experiences many of us face
+        when searching for a new place to call home. I found myself paying hefty inspection fees
+        to view properties that didn't meet my preferences and dealing with numerous agents,
+        each adding their fees to the cost. Finally, when I discovered a property I loved, the
+        agent fees nearly equaled the rent itself. It was clear that there had to be a better way.
+    </p>
+        <p class="team-vision">
+        Our team dedicated three weeks to bring this vision to life, working collaboratively to
+        create a platform that makes finding your ideal rental property easier and more affordable.
+    </p>
+    </div>
+    <!-- Add links to team member profiles -->
+    <div class="team-links">
+        <a href="https://github.com/ocheja1" target="_blank">Ocheja Favour - GitHub</a><br>
+        <a href="https://github.com/thatagricboy" target="_blank">Samuel John - GitHub</a><br>
+        <!-- Add similar links for other team members -->
+    </div>
+    <!-- Add link to the project's GitHub repository -->
+    <div class="github-link">
+        <a href="https://github.com/rently" target="_blank">GitHub Repository</a>
+    </div>
+</section>
+
     </main>
     <footer class="site-footer">
         <div class="container">
@@ -88,9 +149,9 @@
                 </ul>
             </div>
             <div class="footer-contact">
-                <p>Contact Us:</p>
-                <p>Email: contact@example.com</p>
-                <p>Phone: +1 (123) 456-7890</p>
+                <p>Contact Us:</p><br>
+                <p>Ocheja Favour <a href="https://github.com/ocheja1">Github</a></p><br>
+                <p>Samuel John <a href="https://github.com/thatagricboy">Github</a></p>
             </div>
             <div class="footer-social">
                 <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
