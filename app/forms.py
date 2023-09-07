@@ -23,6 +23,7 @@ class SignupForm(FlaskForm):
 class PropertyForm(FlaskForm):
     first_name = StringField('First Name', validators=[DataRequired()])
     last_name = StringField('Last Name', validators=[DataRequired()])
+    phone_number = StringField('Phone Number', validators=[DataRequired()])
     landlord_name = StringField('Address', validators=[DataRequired()])
     property_type = SelectField('Property Type',
                                 choices=[('duplex', 'Duplex'), ('bungalow', 'Bungalow'), ('apartment', 'Apartment')],
@@ -53,3 +54,8 @@ class PropertyForm(FlaskForm):
     youtube_links = TextAreaField('Youtube Video Links')
     image_upload = FileField('Upload Images')
     submit = SubmitField('Submit')
+
+
+class SearchForm(FlaskForm):
+    desired_location = StringField('Desired Location', validators=[DataRequired()])
+    submit = SubmitField('Search')

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rently</title>
+    <title>Rently - Discover, Connect, Rent</title>
     <link rel="stylesheet" href="../static/css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -26,28 +26,81 @@
                     <img src="../static/image/home-2_icon.png" alt="Form" class="formicon">
                 </a>
             </div>
+        </div>
     </header>
     <main>
-        <div class="image">
-            <img
-              class="modern-residential"
-              src="../static/image/Bg.png"
-            />
-        </div>
-        <div class="center-container">
-            <div class="bg-text-container">
-                <div class="bg-text">Discover, Connect, Rent.</div>
+        <div class="landing-content">
+            <div class="image">
+                <img class="modern-residential" src="../static/image/Bg.png" />
             </div>
-            <div class="search-box">
-                <div class="input-container">
-                    <input type="text" placeholder="Desired Location">
-                    <button id="searchButton">Search</button>
+            <div class="center-container">
+                <div class="bg-text-container">
+                    <div class="bg-text">Discover, Connect, Rent.</div>
                 </div>
+                <form method="POST" action="{{ url_for('views.listings') }}">
+                    {{ form.hidden_tag() }}
+                    <div class="search-box">
+    <div class="input-container">
+        {{ form.desired_location.label }}
+        {{ form.desired_location(class="form-control", placeholder="Desired Location") }}
+        {{ form.submit(class="btn btn-primary", id="searchButton", value="Search Listings") }}
+    </div>
+    <div class="search-listings">
+        <!-- Content for search listings goes here -->
+    </div>
+</div>
+
+                </form>
             </div>
         </div>
+        <!-- Add this code below your search form in the <main> section of your HTML -->
+<section class="meet-the-team">
+    <h2>Meet the Team</h2>
+    <div class="team-member">
+        <img src="../static/image/ocheja.jpeg" alt="Team Member 1">
+        <div class="profile-summary">
+            <h3>Ocheja Favour</h3>
+            <p>Front-end Developer</p><br>
+            <p>Ocheja is a talented front-end developer with a passion for creating beautiful and user-friendly interfaces.</p>
+        </div>
+    </div>
+    <div class="team-member">
+        <img src="../static/image/max.jpg" alt="Team Member 2">
+        <div class="profile-summary">
+            <h3>Samuel John</h3>
+            <p>Back-end Developer</p><br>
+            <p>Samuel is an experienced back-end developer who specializes in building robust and scalable server-side solutions.</p>
+        </div>
+    </div>
+</section>
     </main>
-    <footer>
-    </footer>
+   <footer class="site-footer">
+    <div class="container">
+        <div class="footer-logo">
+            <img src="../static/image/logo.png" alt="Rently Logo">
+        </div>
+        <div class="footer-links">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact">
+            <p>Contact Us:</p>
+            <p>Email: contact@example.com</p>
+            <p>Phone: +1 (123) 456-7890</p>
+        </div>
+        <div class="footer-social">
+            <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+</footer>
     <script src="../static/js/script.js"></script>
 </body>
 </html>

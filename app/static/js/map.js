@@ -1,5 +1,4 @@
 // map.js
-
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.querySelector('.search');
     const geocoder = new google.maps.Geocoder();

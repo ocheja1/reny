@@ -249,7 +249,9 @@ first_name = request.form.get('first_name')
 
 
 
-    from flask import Flask
+INIT FILE
+
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_wtf.csrf import CSRFProtect
@@ -311,6 +313,8 @@ def create_database(app):
             print('Created Database!')
 
 
+
+PROPERTYFORM.HTML
 
 <!DOCTYPE html>
 <html lang="en">
@@ -409,5 +413,128 @@ def create_database(app):
         <button type="submit">Submit</button>
     </form>
     <script src="../static/js/PropertyForm.js"></script>
+</body>
+</html>
+
+
+LISTINGS.HTML
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places"></script>
+    <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+</head>
+<body>
+    <header>
+        <!-- Your header content goes here -->
+        <div class="nav-elements">
+            <div class="logo">
+                <a href="/templates/index.html">
+                    <img src="/static/image/logo.png" alt="Website Logo"></a>
+            </div>
+            <div class="bx bx-menu" id="menu-icon"></div>
+
+            <div class="nav_links">
+                <a href="/templates/index.html">Home</a>
+                <a>|</a>
+                <a href="#listings" class="active">Listings</a>
+                <a>|</a>
+                <a href="#">Log in</a>
+            </div>
+    </header>
+    <main>
+        <!-- section for main -->
+        <section class="list_map">
+            <div class="lists">
+                <div class="list_top">
+                    <a href="" class="nav-hist">Home > Listings</a>
+                    <div class="nav_items">
+                        <input type="text" class="search" placeholder="Map Location: Enter location and press Enter">
+                        <div class="btn-box">
+                            <a href="#" class="btn">Max Price</a>
+                            <a href="#" class="btn">Beds</a>
+                            <a href="#" class="btn">filters</a>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <p>10,000 properties</p>
+                        <p>Sort by: <span>Best Match</span></p>
+                    </div>
+                </div>
+                <div class="list_down"></div>
+            </div>
+            <div class="map" id="map"></div>
+        </section>
+    </main>
+</body>
+</html>
+
+
+
+
+index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rently</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header>
+        <div class="nav-elements">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../static/image/logo.png" alt="Website Logo">
+                </a>
+            </div>
+            <div class="bx bx-menu" id="menu-icon"></div>
+
+            <div class="nav_links">
+                <a href="#home" class="active">Home</a>
+                <a>|</a>
+                <a href="{{ url_for('auth.login') }}">Log in</a>
+                <a>|</a>
+                <a href="{{ url_for('views.create_property') }}">
+                    <img src="../static/image/home-2_icon.png" alt="Form" class="formicon">
+                </a>
+            </div>
+    </header>
+    <main>
+        <div class="image">
+            <img
+              class="modern-residential"
+              src="../static/image/Bg.png"
+            />
+        </div>
+        <div class="center-container">
+            <div class="bg-text-container">
+                <div class="bg-text">Discover, Connect, Rent.</div>
+            </div>
+            <form method="POST" action="{{ url_for('views.listings') }}">
+    {{ form.hidden_tag() }}
+    <div class="search-box">
+        <div class="input-container">
+            {{ form.desired_location.label }}
+            {{ form.desired_location(class="form-control", placeholder="Desired Location") }}
+            {{ form.submit(class="btn btn-primary", id="searchButton") }}
+        </div>
+    </div>
+</form>
+
+        </div>
+    </main>
+    <footer>
+    </footer>
+    <script src="../static/js/script.js"></script>
 </body>
 </html>

@@ -105,6 +105,21 @@ select {
     color: #fff;
 }
 
+input[type="text"],
+input[type="number"],
+textarea,
+select,
+input[type="tel"] { /* Include the input[type="tel"] for phone number input */
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    margin-bottom: 10px; /* Add some space between inputs */
+}
+
+
 input[type="file"] {
     background-color: #333;
     color: #fff;
