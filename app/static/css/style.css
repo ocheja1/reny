@@ -455,3 +455,9 @@ a:hover .formicon {
 .footer-social .social-icon:hover {
     color: #ff5733; /* Change icon color on hover */
 }
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+

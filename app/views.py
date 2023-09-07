@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from .models import Property
 from .forms import PropertyForm, SearchForm
 from . import db
+import base64
 
 views = Blueprint('views', __name__)
 
@@ -79,15 +80,27 @@ def listings():
     form = SearchForm()
 
     if form.validate_on_submit():
-        desired_location = form.desired_location.data
-        print(f"Desired Location: {desired_location}")  # Add this line for debugging
-        # Query the database for properties based on the desired location
-        properties = Property.query.filter_by(location=desired_location).all()
-        print(f"Properties found: {properties}")  # Add this line for debugging
+        desired_state = form.desired_location.data  # Use desired_location field for state input
+        print(f"Desired State: {desired_state}")  # Debugging: Print desired state
+
+        # Query the database for properties based on the desired state
+        properties = Property.query.filter_by(state=desired_state).all()
+        print(f"Properties found: {properties}")  # Debugging: Print properties found
+
+        # Encode image data as base64 for each property
+        for property in properties:
+            if property.image_data:
+                property.image_base64 = base64.b64encode(property.image_data).decode('utf-8')
     else:
         # If it's a GET request or form not submitted, display all properties (or some default listings)
         properties = Property.query.all()
 
+        # Encode image data as base64 for each property
+        for property in properties:
+            if property.image_data:
+                property.image_base64 = base64.b64encode(property.image_data).decode('utf-8')
+
     return render_template('listings.html', properties=properties, form=form)
+
 
 

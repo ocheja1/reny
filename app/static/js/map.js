@@ -1,12 +1,11 @@
-// map.js
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.querySelector('.search');
     const geocoder = new google.maps.Geocoder();
     const mapElement = document.getElementById('map');
 
     const mapOptions = {
-        center: { lat: 0, lng: 0 }, // Default center
-        zoom: 10, // Default zoom level
+        center: desiredLocation, // Use the desiredLocation variable as the center
+        zoom: 10,
     };
 
     const map = new google.maps.Map(mapElement, mapOptions);

@@ -538,3 +538,35 @@ index.html
     <script src="../static/js/script.js"></script>
 </body>
 </html>
+
+LISTINGS
+@views.route('/listings', methods=['GET', 'POST'])
+def listings():
+    form = SearchForm()
+
+    if form.validate_on_submit():
+        desired_state = form.desired_location.data  # Use desired_location field for state input
+        print(f"Desired State: {desired_state}")  # Debugging: Print desired state
+
+        # Query the database for properties based on the desired state
+        properties = Property.query.filter_by(state=desired_state).all()
+        print(f"Properties found: {properties}")  # Debugging: Print properties found
+    else:
+        # If it's a GET request or form not submitted, display all properties (or some default listings)
+        properties = Property.query.all()
+
+    return render_template('listings.html', properties=properties, form=form)
+
+
+    <ul class="property-list">
+    {% for property in properties %}
+        <li class="property-item">
+            <img src="data:image/jpeg;base64,{{ property.image_base64 }}" alt="{{ property.location }}">
+            <h3>{{ property.location }}</h3>
+            <p>Property Type: {{ property.property_type }}</p>
+            <p>Number of Beds: {{ property.number_of_beds }}</p>
+            <p>Price: {{ property.price }}</p>
+            <!-- Add more property details as needed -->
+        </li>
+    {% endfor %}
+</ul>
