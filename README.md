@@ -15,11 +15,12 @@ Rently is a comprehensive property rental platform that connects landlords and t
 
 ## Getting Started
 
-1. Clone the repository: `git clone https://github.com/your-username/rently.git`
-2. Install project dependencies: `pip install -r requirements.txt`
-3. Set up your MySQL database and update `config.py` with the database URL
-4. Initialize the database: `flask db upgrade`
-5. Run the application: `flask run`
+1. Fork the repository
+2. Clone the repository: `git clone https://github.com/your-username/rently.git`
+3. Install project dependencies: `pip install -r requirements.txt`
+4. Run ./main.py
+
+
 
 ## Screenshots
 

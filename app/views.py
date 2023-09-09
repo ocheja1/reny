@@ -80,12 +80,12 @@ def listings():
     form = SearchForm()
 
     if form.validate_on_submit():
-        desired_state = form.desired_location.data  # Use desired_location field for state input
-        print(f"Desired State: {desired_state}")  # Debugging: Print desired state
+        desired_state = form.desired_location.data.lower()
+        print(f"Desired State: {desired_state}")
 
         # Query the database for properties based on the desired state
         properties = Property.query.filter_by(state=desired_state).all()
-        print(f"Properties found: {properties}")  # Debugging: Print properties found
+        print(f"Properties found: {properties}")
 
         # Encode image data as base64 for each property
         for property in properties:
