@@ -32,24 +32,24 @@
     <main>
         <!-- section for main -->
         <section class="property-listings">
-            <div class="listings-content">
-                <div class="list_top">
-                    <div class="nav_items">
-                        <form method="POST" action="{{ url_for('views.listings') }}" class="search-form">
-                            {{ form.csrf_token }}
-                            <input type="text" class="search" name="desired_location" placeholder="Map Location: Enter location and press Enter">
-                            <div class="btn-box">
-                                <a href="#" class="btn">Max Price</a>
-                                <a href="#" class="btn">Beds</a>
-                                <a href="#" class="btn">Filters</a>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="info">
-                        <p>{{ properties|length }} properties</p>
-                        <p>Sort by: <span>Best Match</span></p>
-                    </div>
+            <div class="list_top">
+                <div class="nav_items">
+                    <form method="POST" action="{{ url_for('views.listings') }}" class="search-form">
+                        {{ form.csrf_token }}
+                        <input type="text" class="search" name="desired_location" placeholder="Map Location: Enter location and press Enter">
+                        <div class="btn-box">
+                            <a href="#" class="btn">Max Price</a>
+                            <a href="#" class="btn">Beds</a>
+                            <a href="#" class="btn">Filters</a>
+                        </div>
+                    </form>
                 </div>
+                <div class="info">
+                    <p>{{ properties|length }} properties</p>
+                    <p>Sort by: <span>Best Match</span></p>
+                </div>
+            </div>
+            <div class="listings-content">
                 <div class="list_down">
                     <ul class="property-list">
                         {% for property in properties %}
